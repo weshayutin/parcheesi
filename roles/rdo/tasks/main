@@ -1,0 +1,5 @@
+---
+  - yum: name=http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-7.noarch.rpm state=present
+  - yum: name=openstack-packstack state=latest
+  - command: /usr/bin/packstack --gen-answer-file={{ packstack_config }}
+  - command: sed -e 's|_PW=.*|_PW=redhat|g' -i {{ packstack_config }}
